@@ -12,7 +12,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { useRouter } from "next/navigation";
-import { CreditCard, LogOut, User, Settings } from "lucide-react";
+import { LogOut, User, Settings } from "lucide-react";
 
 export function UserNav() {
   const router = useRouter();
@@ -41,10 +41,6 @@ export function UserNav() {
           <DropdownMenuItem>
             <User className="mr-2 h-4 w-4" />
             <span>Perfil</span>
-          </DropdownMenuItem>
-          <DropdownMenuItem>
-            <CreditCard className="mr-2 h-4 w-4" />
-            <span>Faturamento</span>
           </DropdownMenuItem>
            <DropdownMenuItem>
             <Settings className="mr-2 h-4 w-4" />
