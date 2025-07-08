@@ -3,10 +3,10 @@ import { WarehouseMap } from "@/components/warehouse-map";
 import { Package, Truck, AlertTriangle, PackageSearch } from "lucide-react";
 
 const stats = [
-  { title: "Total Items", value: "12,405", icon: Package, color: "text-blue-500" },
-  { title: "Items in Transit", value: "312", icon: Truck, color: "text-amber-500" },
-  { title: "Items to Restock", value: "48", icon: AlertTriangle, color: "text-red-500" },
-  { title: "Locations Used", value: "1,200", icon: PackageSearch, color: "text-green-500" },
+  { title: "Total de Itens", value: "12,405", icon: Package, color: "text-blue-500" },
+  { title: "Itens em Trânsito", value: "312", icon: Truck, color: "text-amber-500" },
+  { title: "Itens para Reabastecer", value: "48", icon: AlertTriangle, color: "text-red-500" },
+  { title: "Locais Utilizados", value: "1,200", icon: PackageSearch, color: "text-green-500" },
 ];
 
 export default function DashboardPage() {
@@ -22,7 +22,7 @@ export default function DashboardPage() {
             <CardContent>
               <div className="text-2xl font-bold">{stat.value}</div>
               <p className="text-xs text-muted-foreground">
-                +2.1% from last month
+                +2,1% do último mês
               </p>
             </CardContent>
           </Card>

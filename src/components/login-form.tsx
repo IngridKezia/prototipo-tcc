@@ -24,21 +24,21 @@ export function LoginForm() {
           <div className="p-3 rounded-full bg-primary/10 mb-2">
             <Warehouse className="w-10 h-10 text-primary" />
           </div>
-          <CardTitle className="text-2xl font-bold">StockWise</CardTitle>
-          <CardDescription>Indoor GPS for your inventory.</CardDescription>
+          <CardTitle className="text-2xl font-bold">Onde Está</CardTitle>
+          <CardDescription>GPS interno para o seu estoque.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
           <div className="space-y-2">
-            <Label htmlFor="email">Email</Label>
+            <Label htmlFor="email">E-mail</Label>
             <Input id="email" type="email" placeholder="supervisor@stockwise.com" required defaultValue="supervisor@stockwise.com" />
           </div>
           <div className="space-y-2">
-            <Label htmlFor="password">Password</Label>
+            <Label htmlFor="password">Senha</Label>
             <Input id="password" type="password" required defaultValue="password" />
           </div>
         </CardContent>
         <CardFooter>
-          <Button type="submit" className="w-full">Sign In</Button>
+          <Button type="submit" className="w-full">Entrar</Button>
         </CardFooter>
       </Card>
     </form>

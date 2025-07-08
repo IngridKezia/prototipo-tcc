@@ -28,7 +28,7 @@ const movementHistory = [
     sku: "IG-T800-001",
     user: "Alice",
     action: "Entry",
-    location: "Receiving Bay",
+    location: "Doca de Recebimento",
     date: "2024-07-22 09:15 AM",
   },
   {
@@ -39,7 +39,7 @@ const movementHistory = [
     sku: "IG-T800-001",
     user: "Alice",
     action: "Move",
-    location: "Aisle B | Shelf 4",
+    location: "Corredor B | Prateleira 4",
     date: "2024-07-22 09:30 AM",
   },
   {
@@ -50,7 +50,7 @@ const movementHistory = [
     sku: "HP-250-004",
     user: "Bob",
     action: "Entry",
-    location: "Receiving Bay",
+    location: "Doca de Recebimento",
     date: "2024-07-22 10:05 AM",
   },
   {
@@ -61,7 +61,7 @@ const movementHistory = [
     sku: "HP-250-004",
     user: "Bob",
     action: "Move",
-    location: "Aisle A | Shelf 8",
+    location: "Corredor A | Prateleira 8",
     date: "2024-07-22 10:20 AM",
   },
   {
@@ -72,7 +72,7 @@ const movementHistory = [
     sku: "CBR-050-011",
     user: "Charlie",
     action: "Separation",
-    location: "Picking Area 2",
+    location: "Área de Separação 2",
     date: "2024-07-22 11:00 AM",
   },
   {
@@ -83,7 +83,7 @@ const movementHistory = [
     sku: "CBR-050-011",
     user: "Charlie",
     action: "Exit",
-    location: "Dispatch Bay 1",
+    location: "Doca de Despacho 1",
     date: "2024-07-22 11:45 AM",
   },
 ];
@@ -98,6 +98,13 @@ const getBadgeVariant = (action: string) => {
     }
 }
 
+const actionLabels: {[key: string]: string} = {
+    "Entry": "Entrada",
+    "Move": "Mover",
+    "Separation": "Separação",
+    "Exit": "Saída",
+}
+
 
 export default function HistoryPage() {
   return (
@@ -105,19 +112,19 @@ export default function HistoryPage() {
       <CardHeader>
         <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4">
             <div>
-                <CardTitle>Movement History</CardTitle>
+                <CardTitle>Histórico de Movimentação</CardTitle>
                 <CardDescription>
-                Track all inventory movements within the warehouse.
+                Acompanhe todas as movimentações de estoque no armazém.
                 </CardDescription>
             </div>
             <div className="flex flex-col sm:flex-row gap-2">
                 <div className="relative">
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
-                    <Input placeholder="Search history..." className="pl-8 w-full sm:w-auto"/>
+                    <Input placeholder="Pesquisar histórico..." className="pl-8 w-full sm:w-auto"/>
                 </div>
                 <Button variant="outline">
                     <Download className="mr-2 h-4 w-4" />
-                    Export
+                    Exportar
                 </Button>
             </div>
         </div>
@@ -127,11 +134,11 @@ export default function HistoryPage() {
           <Table>
             <TableHeader>
               <TableRow>
-                <TableHead>Product</TableHead>
-                <TableHead>Action</TableHead>
-                <TableHead className="hidden md:table-cell">User</TableHead>
-                <TableHead>Location</TableHead>
-                <TableHead className="text-right hidden sm:table-cell">Date</TableHead>
+                <TableHead>Produto</TableHead>
+                <TableHead>Ação</TableHead>
+                <TableHead className="hidden md:table-cell">Usuário</TableHead>
+                <TableHead>Localização</TableHead>
+                <TableHead className="text-right hidden sm:table-cell">Data</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody>
@@ -154,7 +161,7 @@ export default function HistoryPage() {
                     </div>
                   </TableCell>
                   <TableCell>
-                    <Badge variant={getBadgeVariant(item.action)}>{item.action}</Badge>
+                    <Badge variant={getBadgeVariant(item.action)}>{actionLabels[item.action]}</Badge>
                   </TableCell>
                   <TableCell className="hidden md:table-cell">{item.user}</TableCell>
                   <TableCell>{item.location}</TableCell>

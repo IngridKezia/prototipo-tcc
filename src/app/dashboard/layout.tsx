@@ -24,25 +24,25 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
             <div className="flex h-14 items-center justify-center border-b p-2">
                 <Link href="/dashboard" className="flex items-center gap-2 font-semibold">
                     <Warehouse className="h-6 w-6 text-primary" />
-                    <span className="group-data-[collapsible=icon]:hidden">StockWise</span>
+                    <span className="group-data-[collapsible=icon]:hidden">Onde Está</span>
                 </Link>
             </div>
           </SidebarHeader>
           <SidebarContent>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Dashboard">
+                <SidebarMenuButton asChild tooltip="Painel">
                   <Link href="/dashboard">
                     <Home />
-                    <span>Dashboard</span>
+                    <span>Painel</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
-                 <SidebarMenuButton asChild tooltip="Movement History">
+                 <SidebarMenuButton asChild tooltip="Histórico de Movimentação">
                     <Link href="/dashboard/history">
                         <History />
-                        <span>History</span>
+                        <span>Histórico</span>
                     </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
@@ -51,10 +51,10 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
           <SidebarFooter>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Settings">
+                <SidebarMenuButton asChild tooltip="Configurações">
                   <Link href="#">
                     <Settings />
-                    <span>Settings</span>
+                    <span>Configurações</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>

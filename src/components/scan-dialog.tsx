@@ -27,8 +27,8 @@ export function ScanDialog() {
       setScannedProduct({
         name: "Industrial Gearbox T-800",
         sku: "IG-T800-001",
-        location: "Aisle B | Shelf 4",
-        status: "Available",
+        location: "Corredor B | Prateleira 4",
+        status: "Disponível",
         image: "https://placehold.co/400x400.png",
         imageHint: "industrial gearbox"
       });
@@ -38,8 +38,8 @@ export function ScanDialog() {
 
   const handleConfirm = () => {
     toast({
-      title: "Movement Confirmed",
-      description: `${scannedProduct.name} has been processed.`,
+      title: "Movimentação Confirmada",
+      description: `${scannedProduct.name} foi processado.`,
     });
     setScannedProduct(null);
     setOpen(false);
@@ -58,25 +58,25 @@ export function ScanDialog() {
       <DialogTrigger asChild>
         <Button variant="default" className="gap-2 shadow-sm">
           <ScanLine className="h-4 w-4" />
-          <span className="hidden sm:inline">Scan Product</span>
+          <span className="hidden sm:inline">Escanear Produto</span>
         </Button>
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>
-          <DialogTitle>Scan Barcode</DialogTitle>
+          <DialogTitle>Escanear Código de Barras</DialogTitle>
           <DialogDescription>
-            Center the product's barcode in the view to scan.
+            Centralize o código de barras do produto na visualização para escanear.
           </DialogDescription>
         </DialogHeader>
         
         {!scannedProduct ? (
           <div className="my-4 flex flex-col items-center justify-center gap-4">
             <div className="relative w-64 h-48 bg-slate-900 rounded-lg overflow-hidden flex items-center justify-center">
-              <p className="text-white/50 z-10 font-mono">Camera View</p>
+              <p className="text-white/50 z-10 font-mono">Visualização da Câmera</p>
                <div className="absolute w-full h-[2px] bg-red-500/70 shadow-[0_0_10px_2px_#ef4444] scan-line"></div>
             </div>
             <Button onClick={handleSimulateScan} disabled={isScanning} className="w-64">
-              {isScanning ? "Scanning..." : "Simulate Scan"}
+              {isScanning ? "Escaneando..." : "Simular Escaneamento"}
             </Button>
           </div>
         ) : (
@@ -98,7 +98,7 @@ export function ScanDialog() {
             <div className="space-y-2 text-sm">
                 <div className="flex items-center gap-2">
                     <MapPin className="h-4 w-4 text-muted-foreground" />
-                    <span>Location: <strong>{scannedProduct.location}</strong></span>
+                    <span>Localização: <strong>{scannedProduct.location}</strong></span>
                 </div>
                 <div className="flex items-center gap-2">
                     <CheckCircle className="h-4 w-4 text-muted-foreground" />
@@ -109,7 +109,7 @@ export function ScanDialog() {
         )}
 
         <DialogFooter>
-          {scannedProduct && <Button onClick={handleConfirm} className="w-full">Confirm Movement</Button>}
+          {scannedProduct && <Button onClick={handleConfirm} className="w-full">Confirmar Movimentação</Button>}
         </DialogFooter>
       </DialogContent>
     </Dialog>
