@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Warehouse } from 'lucide-react';
+import { Compass } from 'lucide-react';
 
 export function LoginForm() {
   const router = useRouter();
@@ -22,7 +22,7 @@ export function LoginForm() {
       <Card>
         <CardHeader className="items-center text-center">
           <div className="p-3 rounded-full bg-primary/10 mb-2">
-            <Warehouse className="w-10 h-10 text-primary" />
+            <Compass className="w-10 h-10 text-primary" />
           </div>
           <CardTitle className="text-2xl font-bold">Onde Está</CardTitle>
           <CardDescription>GPS interno para o seu estoque.</CardDescription>
