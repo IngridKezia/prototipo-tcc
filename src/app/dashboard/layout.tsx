@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import { UserNav } from "@/components/user-nav";
 import Link from 'next/link';
-import { Home, History, Warehouse, Settings } from 'lucide-react';
+import { Home, History, Warehouse, Settings, ClipboardList } from 'lucide-react';
 import { ScanDialog } from "@/components/scan-dialog";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -36,6 +36,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                     <Home />
                     <span>Painel</span>
                   </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                 <SidebarMenuButton asChild tooltip="Registro">
+                    <Link href="/dashboard/registro">
+                        <ClipboardList />
+                        <span>Registro</span>
+                    </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
