@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/tooltip";
 import { Search } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { ScrollArea } from "./ui/scroll-area";
 
 const aisles = Array.from({ length: 5 }, (_, i) => `Corredor ${String.fromCharCode(65 + i)}`);
 const shelvesPerAisle = 10;
@@ -62,46 +63,48 @@ export function WarehouseMap() {
       </CardHeader>
       <CardContent>
         <TooltipProvider>
-          <div className="grid grid-cols-5 gap-4 bg-muted/50 p-4 rounded-lg overflow-x-auto">
-            {aisles.map((aisle, aisleIndex) => (
-              <div key={aisle} className="flex flex-col gap-2 min-w-[120px]">
-                <h3 className="text-center font-bold text-sm text-muted-foreground">{aisle}</h3>
-                <div className="grid grid-cols-2 gap-2">
-                  {Array.from({ length: shelvesPerAisle }).map((_, shelfIndex) => {
-                    const productOnShelf = filteredProducts.find(
-                      (p) => p.aisle === aisleIndex && p.shelf === shelfIndex
-                    );
-                    const locationKey = `${aisleIndex}-${shelfIndex}`;
-                    return (
-                      <Tooltip key={locationKey} delayDuration={0}>
-                        <TooltipTrigger asChild>
-                          <div
-                            className={cn(
-                              "h-12 w-full rounded flex items-center justify-center transition-colors",
-                              productOnShelf ? "bg-primary/20 border-2 border-primary" : "bg-secondary"
-                            )}
-                          >
-                            {productOnShelf && (
-                              <div className={cn(
-                                "w-4 h-4 rounded-full",
-                                statusColors[productOnShelf.status as keyof typeof statusColors]
-                              )} />
-                            )}
-                          </div>
-                        </TooltipTrigger>
-                        <TooltipContent>
-                          <p className="font-semibold">
-                            {String.fromCharCode(65 + aisleIndex)}{shelfIndex + 1}: {productOnShelf ? productOnShelf.name : "Vazio"}
-                          </p>
-                          {productOnShelf && <p>Status: {statusLabels[productOnShelf.status]}</p>}
-                        </TooltipContent>
-                      </Tooltip>
-                    );
-                  })}
+          <ScrollArea className="w-full whitespace-nowrap">
+            <div className="inline-grid grid-cols-5 gap-4 bg-muted/50 p-4 rounded-lg">
+              {aisles.map((aisle, aisleIndex) => (
+                <div key={aisle} className="flex flex-col gap-2 min-w-[120px]">
+                  <h3 className="text-center font-bold text-sm text-muted-foreground">{aisle}</h3>
+                  <div className="grid grid-cols-2 gap-2">
+                    {Array.from({ length: shelvesPerAisle }).map((_, shelfIndex) => {
+                      const productOnShelf = filteredProducts.find(
+                        (p) => p.aisle === aisleIndex && p.shelf === shelfIndex
+                      );
+                      const locationKey = `${aisleIndex}-${shelfIndex}`;
+                      return (
+                        <Tooltip key={locationKey} delayDuration={0}>
+                          <TooltipTrigger asChild>
+                            <div
+                              className={cn(
+                                "h-12 w-full rounded flex items-center justify-center transition-colors",
+                                productOnShelf ? "bg-primary/20 border-2 border-primary" : "bg-secondary"
+                              )}
+                            >
+                              {productOnShelf && (
+                                <div className={cn(
+                                  "w-4 h-4 rounded-full",
+                                  statusColors[productOnShelf.status as keyof typeof statusColors]
+                                )} />
+                              )}
+                            </div>
+                          </TooltipTrigger>
+                          <TooltipContent>
+                            <p className="font-semibold">
+                              {String.fromCharCode(65 + aisleIndex)}{shelfIndex + 1}: {productOnShelf ? productOnShelf.name : "Vazio"}
+                            </p>
+                            {productOnShelf && <p>Status: {statusLabels[productOnShelf.status]}</p>}
+                          </TooltipContent>
+                        </Tooltip>
+                      );
+                    })}
+                  </div>
                 </div>
-              </div>
-            ))}
-          </div>
+              ))}
+            </div>
+          </ScrollArea>
         </TooltipProvider>
         <div className="flex flex-wrap items-center gap-x-4 gap-y-2 mt-4 text-sm">
             <span className="font-semibold">Legenda:</span>
