@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, type ReactNode } from "react";
 import { Button } from "@/components/ui/button";
 import {
   Dialog,
@@ -15,7 +15,11 @@ import { ScanLine, MapPin, CheckCircle, PackagePlus, ArrowDownLeft, ArrowUpRight
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
 
-export function ScanDialog() {
+interface ScanDialogProps {
+  trigger?: ReactNode;
+}
+
+export function ScanDialog({ trigger }: ScanDialogProps) {
   const [open, setOpen] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   const [scannedProduct, setScannedProduct] = useState<any>(null);
@@ -53,13 +57,17 @@ export function ScanDialog() {
     }
   }
 
+  const defaultTrigger = (
+      <Button variant="default" className="gap-2 shadow-sm">
+        <ScanLine className="h-4 w-4" />
+        <span className="hidden sm:inline">Escanear Produto</span>
+      </Button>
+  );
+
   return (
     <Dialog open={open} onOpenChange={handleOpenChange}>
       <DialogTrigger asChild>
-        <Button variant="default" className="gap-2 shadow-sm">
-          <ScanLine className="h-4 w-4" />
-          <span className="hidden sm:inline">Escanear Produto</span>
-        </Button>
+        {trigger || defaultTrigger}
       </DialogTrigger>
       <DialogContent className="sm:max-w-[425px]">
         <DialogHeader>

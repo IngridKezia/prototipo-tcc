@@ -19,6 +19,7 @@ import {
 } from "@/components/ui/table";
 import { Truck, Search, PlusCircle } from "lucide-react";
 import Image from "next/image";
+import { ScanDialog } from "@/components/scan-dialog";
 
 const itemsToShip = [
   {
@@ -63,10 +64,14 @@ export default function PrepararEnvioPage() {
                     <Search className="absolute left-2.5 top-2.5 h-4 w-4 text-muted-foreground" />
                     <Input placeholder="Buscar produto..." className="pl-8 w-full sm:w-auto"/>
                 </div>
-                <Button>
-                    <PlusCircle className="mr-2 h-4 w-4" />
-                    Adicionar Item
-                </Button>
+                <ScanDialog
+                  trigger={
+                    <Button>
+                      <PlusCircle className="mr-2 h-4 w-4" />
+                      Adicionar Item
+                    </Button>
+                  }
+                />
             </div>
         </div>
       </CardHeader>
