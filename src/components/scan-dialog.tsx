@@ -11,7 +11,7 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { ScanLine, MapPin, CheckCircle } from "lucide-react";
+import { ScanLine, MapPin, CheckCircle, PackagePlus, ArrowDownLeft, ArrowUpRight, Truck } from "lucide-react";
 import Image from "next/image";
 import { useToast } from "@/hooks/use-toast";
 
@@ -36,9 +36,9 @@ export function ScanDialog() {
     }, 1500);
   };
 
-  const handleConfirm = () => {
+  const handleAction = (actionName: string) => {
     toast({
-      title: "Movimentação Confirmada",
+      title: `Ação: ${actionName}`,
       description: `${scannedProduct.name} foi processado.`,
     });
     setScannedProduct(null);
@@ -109,7 +109,22 @@ export function ScanDialog() {
         )}
 
         <DialogFooter>
-          {scannedProduct && <Button onClick={handleConfirm} className="w-full">Confirmar Movimentação</Button>}
+          {scannedProduct && (
+            <div className="grid grid-cols-2 gap-2 w-full">
+                <Button variant="outline" onClick={() => handleAction('Receber')}>
+                    <ArrowDownLeft className="mr-2 h-4 w-4"/>Receber
+                </Button>
+                <Button variant="outline" onClick={() => handleAction('Separar')}>
+                    <PackagePlus className="mr-2 h-4 w-4"/>Separar
+                </Button>
+                <Button variant="outline" onClick={() => handleAction('Expedir')}>
+                    <ArrowUpRight className="mr-2 h-4 w-4"/>Expedir
+                </Button>
+                 <Button onClick={() => handleAction('Preparar Envio')}>
+                    <Truck className="mr-2 h-4 w-4"/>Preparar Envio
+                </Button>
+            </div>
+          )}
         </DialogFooter>
       </DialogContent>
     </Dialog>

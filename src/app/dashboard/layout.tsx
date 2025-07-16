@@ -13,7 +13,7 @@ import {
 } from "@/components/ui/sidebar";
 import { UserNav } from "@/components/user-nav";
 import Link from 'next/link';
-import { Home, History, Warehouse, Settings, ClipboardList } from 'lucide-react';
+import { Home, History, Warehouse, Settings, ClipboardList, PackageCheck } from 'lucide-react';
 import { ScanDialog } from "@/components/scan-dialog";
 
 export default function DashboardLayout({ children }: { children: ReactNode }) {
@@ -51,6 +51,14 @@ export default function DashboardLayout({ children }: { children: ReactNode }) {
                     <Link href="/dashboard/history">
                         <History />
                         <span>Histórico</span>
+                    </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                 <SidebarMenuButton asChild tooltip="Preparar Envio">
+                    <Link href="/dashboard/preparar-envio">
+                        <PackageCheck />
+                        <span>Preparar Envio</span>
                     </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
