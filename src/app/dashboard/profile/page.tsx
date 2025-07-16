@@ -5,9 +5,9 @@ import { Mail, Key } from "lucide-react";
 
 export default function ProfilePage() {
   const user = {
-    name: "Supervisor",
+    name: "Sara Vitoria",
     email: "supervisor@stockwise.com",
-    avatar: "https://placehold.co/128x128.png",
+    avatar: "https://i.ibb.co/Wp7B2wL/avatar-1.png",
     avatarHint: "person face",
     fallback: "S",
     registration: "SW-12345",
