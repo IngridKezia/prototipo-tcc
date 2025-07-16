@@ -7,7 +7,7 @@ export default function ProfilePage() {
   const user = {
     name: "Sara Vitoria",
     email: "supervisor@stockwise.com",
-    avatar: "https://i.ibb.co/Wp7B2wL/avatar-1.png",
+    avatar: "https://i.postimg.cc/6p8N1L8Y/IMG-20250716-WA0053.jpg",
     avatarHint: "person face",
     fallback: "S",
     registration: "SW-12345",
